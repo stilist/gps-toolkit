@@ -45,7 +45,7 @@ class LFSR {
       throw new TypeError('seed must be null, Number, or String')
     }
     this.provided_seed = seed
-    this.current_state = this.sanitized_seed
+    this.current_state = this.seed
   }
 
   /**
@@ -79,10 +79,10 @@ class LFSR {
     let bitstring = this.provided_seed
 
     // Coerce numbers to bitstrings to simplify length sanitization.
-    if (typeof provided_seed === 'number') bitstring = provided_seed.toString(2)
+    if (typeof bitstring === 'number') bitstring = bitstring.toString(2)
 
     // Ensure the seed is at most `m` bits long.
-    bitstring = bitstrings.slice(-this.m)
+    bitstring = bitstring.slice(-this.m)
     // Convert back to a number.
     const seed = parseInt(bitstring, 2)
 
