@@ -4,11 +4,6 @@ import described_class from '../src/lfsr'
 
 describe('LFSR', () => {
   describe('#initialize', () => {
-    it('throws an error when m is undefined', () => {
-      assert.throws(() => { new described_class },
-                    TypeError)
-    })
-
     it('throws an error when m is not a Number', () => {
       assert.throws(() => { new described_class('a') },
                     TypeError)
@@ -39,6 +34,11 @@ describe('LFSR', () => {
                           TypeError)
     })
 
+    it('sets default m', () => {
+      assert.doesNotThrow(() => { new described_class() },
+                          TypeError)
+    })
+
     it('sets default feedback_taps', () => {
       const lfsr = new described_class(3)
       assert.deepEqual(lfsr.feedback_taps, [1])
@@ -60,7 +60,7 @@ describe('LFSR', () => {
     })
 
     it('sets default seed', () => {
-      const lfsr = new described_class(3)
+      const lfsr = new described_class(3, [1])
       assert.equal(lfsr.current_state, 0b1)
     })
 
