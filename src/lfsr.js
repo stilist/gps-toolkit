@@ -103,14 +103,12 @@ class LFSR {
   get feedback_tap_mask() {
     const taps = this.feedback_taps
 
-    // Reject any indices outside the range 1..m.
-    const valid = taps.filter((tap) => tap > 0 && tap <= this.m)
+    // Reject any indices outside the range `1..m`.
+    const valid = taps.filter((tap_j) => tap_j > 0 && tap_j <= m)
 
-    // `1 << j - 1` makes a one followed by `j - 1` zeroes; that value is then
-    // ORed with `mask`, which sets bit `j - 1` of `mask` to 1.
-    //
-    // @note Taps are in the range 1..m, so `j` must be shifted reduced by one.
-    let mask = valid.reduce((memo, j) => memo | (1 << j - 1),
+    // `1 << tap_j - 1` makes a one followed by `tap_j - 1` zeroes; that value
+    // is then ORed with `mask`, which sets bit `tap_j - 1` of `mask` to `1`.
+    let mask = valid.reduce((memo, tap_j) => memo | (1 << tap_j - 1),
                             0)
 
     // delete this.mask
