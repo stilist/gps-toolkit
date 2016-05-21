@@ -28,11 +28,11 @@ class LFSR {
 
     // Make sure the entire `m` sequence can be stored in a `Number` even if
     // `feedback_taps` is configured to generate an m-sequence.
+    this.m = m
     if (m < 1 || this.maximum_sequence_length > Number.MAX_SAFE_INTEGER) {
       const max_m = ~~(Math.sqrt(Number.MAX_SAFE_INTEGER))
       throw new TypeError(`m must be in the range 1..${max_m} (inclusive)`)
     }
-    this.m = m
 
     if (typeof feedback_taps.length === 'undefined') {
       throw new TypeError('feedback_taps must be null or Array')
