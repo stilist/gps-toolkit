@@ -65,4 +65,4 @@ class FibonacciLFSR extends LFSR {
   }
 }
 
-export default LFSR
+export default FibonacciLFSR
