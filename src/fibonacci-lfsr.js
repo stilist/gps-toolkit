@@ -8,12 +8,11 @@ import LFSR from './lfsr'
  *
  * @example A 3-tap m-sequence (maximum-length sequence)
  *   var size = 3
- *   var lfsr = new FibonacciLFSR(size, [3, 2])
+ *   var lfsr = new FibonacciLFSR(size, [size, 2])
  *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
  *   //=> 1, "1"
  *
- *   var sequence_length = Math.pow(2, size) - 1
- *   for (var n = 1; n < (sequence_length + 1); n++) {
+ *   for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
  *     var bit = lfsr.next()
  *
  *     console.log(bit, bit.toString(2))
@@ -43,6 +42,18 @@ class FibonacciLFSR extends LFSR {
     let state = this.current_state
 
     // The input bit is the binary sum (XOR) of the feedback taps' values.
+    //
+    // It looks odd to use just `taps` as the predicate with no comparisons,
+    // but it means the loop will exit as soon as `taps` is bit shifted to be
+    // all `0`s. If there are only a few taps set early in the mask this skips
+    // a lot of useless iteration.
+    //
+    // @note This could also be implemented as:
+    //     let tap_count = 0
+    //     for (...) { tap_count += state_clone & 1 }
+    //     input_bit ^= tap_count % 2
+    //
+    // @see http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
     let input_bit = 0
     let taps = this.feedback_tap_mask
     for (let state_clone = state; taps; state_clone >>= 1, taps >>= 1) {

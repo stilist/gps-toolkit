@@ -12,8 +12,7 @@ import LFSR from './lfsr'
  *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
  *   //=> 1, "1"
  *
- *   var sequence_length = Math.pow(2, size) - 1
- *   for (var n = 1; n < (sequence_length + 1); n++) {
+ *   for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
  *     var bit = lfsr.next()
  *
  *     console.log(bit, bit.toString(2))
