@@ -1,3 +1,26 @@
+import 'babel-polyfill'
+
+/**
+ * Filter an array to unique items.
+ *
+ * @param {array} array - the array to process
+ * @return {array} the unique items in `array`
+ * @private
+ */
+function uniq(array) {
+  if (typeof array.length === 'undefined') return []
+
+  const seen = []
+  const unique = []
+
+  for (let item of array) {
+    if (seen.indexOf(item) === -1) unique.push(item)
+    seen.push(item)
+  }
+
+  return unique
+}
+
 /**
  * A base implementation of a linear feedback shift register (LFSR).
  *
@@ -92,27 +115,41 @@ class LFSR {
   }
 
   /**
-   * Converts the list of tap indices into a corresponding bitmask.
+   * Validate and process feedback tap indices.
    *
-   * @param {number[]} feedback_taps - indices to use as feedback taps
-   * @return {number} bitmask of all `m` taps, with a `1` for active taps
+   * @return {array} the sanitized tap indices
    * @private
-   *
-   * @todo XXX Need to handle Fibonacci vs Galois taps.
    */
-  get feedback_tap_mask() {
+  get sanitized_feedback_taps() {
+    if (this._sanitized_feedback_taps) return this._sanitized_feedback_taps
+
     const taps = this.feedback_taps
+    const unique = uniq(taps)
 
     // Reject any indices outside the range `1..m`.
-    const valid = taps.filter((tap_j) => tap_j > 0 && tap_j <= m)
+    const valid = unique.filter((tap_j) => tap_j > 0 && tap_j <= this.m)
+
+    this._sanitized_feedback_taps = valid
+    return valid
+  }
+
+  /**
+   * Converts the list of tap indices into a corresponding bitmask.
+   *
+   * @return {number} bitmask of all `m` taps, with a `1` for active taps
+   * @private
+   */
+  get feedback_tap_mask() {
+    if (this._feedback_tap_mask) return this._feedback_tap_mask
+
+    const taps = this.sanitized_feedback_taps
 
     // `1 << tap_j - 1` makes a one followed by `tap_j - 1` zeroes; that value
     // is then ORed with `mask`, which sets bit `tap_j - 1` of `mask` to `1`.
-    let mask = valid.reduce((memo, tap_j) => memo | (1 << tap_j - 1),
-                            0)
+    let mask = taps.reduce((memo, tap_j) => memo | (1 << tap_j - 1),
+                           0)
 
-    // delete this.mask
-    // return this.mask = mask
+    this._feedback_tap_mask = mask
     return mask
   }
 }
