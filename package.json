@@ -27,10 +27,11 @@
     "doc": "jsdoc src/ --configure jsdoc.json --destination doc",
 
     "lint": "standard src/ test/",
-    "build": "babel src/index.js --out-file lib/index.js --source-maps",
-    "release": "npm run lint && npm run build",
 
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-core/register test/*.spec.js"
+    "test": "mocha --compilers js:babel-core/register test/*.spec.js",
+
+    "prebuild": "npm run doc && npm test",
+    "build": "babel src/index.js --out-file lib/index.js --source-maps"
   }
 }
