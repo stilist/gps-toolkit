@@ -87,10 +87,12 @@ class LFSR {
    * @return {number} the largest possible number of states for the given `m`
    */
   get maximum_sequence_length() {
-    // const max_length = Math.pow(2, this.m) - 1
-    // delete this.maximum_sequence_length
-    // return this.maximum_sequence_length = max_length
-    return Math.pow(2, this.m) - 1
+    if (this._maximum_sequence_length) return this._maximum_sequence_length
+
+    const max_length = Math.pow(2, this.m) - 1
+
+    this._maximum_sequence_length = max_length
+    return max_length
   }
 
   /**
@@ -99,6 +101,8 @@ class LFSR {
    * @return {number} the validated seed value
    */
   get seed() {
+    if (this._seed) return this._seed
+
     let bitstring = this.provided_seed
 
     // Coerce numbers to bitstrings to simplify length sanitization.
@@ -109,8 +113,7 @@ class LFSR {
     // Convert back to a number.
     const seed = parseInt(bitstring, 2)
 
-    // delete this.seed
-    // return this.seed = seed
+    this._seed = seed
     return seed
   }
 
