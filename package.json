@@ -27,7 +27,7 @@
     "doc": "jsdoc src/ --configure jsdoc.json --destination doc",
 
     "lint": "standard src/ test/",
-    "build": "babel src/index.js -d lib/",
+    "build": "babel src/index.js --out-file lib/index.js --source-maps",
     "release": "npm run lint && npm run build",
     "test": "mocha --compilers js:babel-core/register test/*.spec.js"
   }
