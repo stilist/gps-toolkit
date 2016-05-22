@@ -14,6 +14,11 @@ describe('GaloisLFSR', () => {
       assert.equal(lfsr.next(), 0b1)
     })
 
+    it('uses custom Galois feedback_taps', () => {
+      const lfsr = new described_class(5, [4, 3])
+      assert.equal(lfsr.feedback_tap_mask, 0b01100)
+    })
+
     it('iterates with non-maximal taps', () => {
       const lfsr = new described_class(3, [3])
       const reference = [0b0, 0b0, 0b1]

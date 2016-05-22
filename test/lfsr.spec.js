@@ -54,11 +54,6 @@ describe('LFSR', () => {
       assert.equal(lfsr.feedback_tap_mask, 0b1)
     })
 
-    it('uses custom feedback_taps', () => {
-      const lfsr = new described_class(3, [3, 2])
-      assert.equal(lfsr.feedback_tap_mask, 0b110)
-    })
-
     it('sets default seed', () => {
       const lfsr = new described_class(3, [1])
       assert.equal(lfsr.current_state, 0b1)
