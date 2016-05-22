@@ -43,7 +43,7 @@ class LFSR {
   /**
    * @param {number} m - number of taps in the register
    * @param {number[]} [feedback_taps=[1]] - indices of taps that affect the
-   *   output (range 1..m inclusive)
+   *   output (range `1..m` inclusive)
    * @param {(number|string)} [seed=1] - starting value for the generator
    */
   constructor(m=1, feedback_taps=[1], seed=1) {
@@ -81,10 +81,11 @@ class LFSR {
   /**
    * LFSRs have a maximum of `2**m` states. One of those is fairly useless: if
    * seeded with all `0`s, the LFSR will never transition to any other state.
-   * However, LFSR can never transition *into* that state, so the maximum
-   * sequence length is `2**m - 1`.
+   * However, LFSR can never transition *into* that state either, so the
+   * LFSR can cycle through a maximum of `2**m - 1` states.
    *
-   * @return {number} the largest possible number of states for the given `m`
+   * @type {number}
+   * @static
    */
   get maximum_sequence_length() {
     if (this._maximum_sequence_length) return this._maximum_sequence_length
@@ -98,7 +99,8 @@ class LFSR {
   /**
    * Validates the user's seed and sets a fallback value.
    *
-   * @return {number} the validated seed value
+   * @type {number}
+   * @static
    */
   get seed() {
     if (this._seed) return this._seed
@@ -120,8 +122,9 @@ class LFSR {
   /**
    * Validate and process feedback tap indices.
    *
-   * @return {array} the sanitized tap indices
-   * @private
+   * @type {number[]}
+   * @protected
+   * @static
    */
   get sanitized_feedback_taps() {
     if (this._sanitized_feedback_taps) return this._sanitized_feedback_taps
@@ -139,8 +142,9 @@ class LFSR {
   /**
    * Converts the list of tap indices into a corresponding bitmask.
    *
-   * @return {number} bitmask of all `m` taps, with a `1` for active taps
+   * @type {number}
    * @private
+   * @static
    *
    * @example
    *     var lfsr = new LFSR(3, [3, 2])
