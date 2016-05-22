@@ -141,6 +141,11 @@ class LFSR {
    *
    * @return {number} bitmask of all `m` taps, with a `1` for active taps
    * @private
+   *
+   * @example
+   *     var lfsr = new LFSR(3, [3, 2])
+   *     console.log(lfsr.feedback_tap_mask.toString(2))
+   *     #=> '110'
    */
   get feedback_tap_mask() {
     if (this._feedback_tap_mask) return this._feedback_tap_mask
