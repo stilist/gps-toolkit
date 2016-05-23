@@ -74,6 +74,7 @@ class LFSR {
 
   /**
    * @throws {Error}
+   * @abstract
    * @instance
    * @private
    */
