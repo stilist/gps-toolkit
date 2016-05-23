@@ -16,7 +16,7 @@ import LFSR from './lfsr'
  * for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
  *   var bit = lfsr.next()
  *
- *   console.log(bit, bit.toString(2))
+ *   console.log(lfsr.current_state, bit.toString(2))
  * }
  * //=> 6, "0"
  * //=> 3, "1"
