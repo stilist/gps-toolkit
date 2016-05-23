@@ -42,6 +42,9 @@ const taps_lookup = [
  * places feedback taps so the LFSR will generate an m-sequence (maximal length
  * sequence).
  *
+ * @class
+ * @extends LFSR
+ *
  * @example A 3-tap m-sequence
  *   var size = 3
  *   var lfsr = new MSequence(size)
@@ -71,7 +74,6 @@ const taps_lookup = [
  *   console.log(state, state.toString(2))
  *   //=> 3, "11"
  *
- * @extends LFSR
  *
  * @see https://en.wikipedia.org/wiki/Maximum_length_sequence
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -80,7 +82,7 @@ class MSequence extends LFSR {
   /*
    * @param {number} m - number of taps in the register
    * @param {(number|string)} [seed] - starting value for the generator
-   * @class
+   * @override
    */
   constructor(m, seed) {
     const taps = taps_lookup[m]

@@ -5,26 +5,27 @@ import LFSR from './lfsr'
  * A Fibonacci implementation of a linear feedback shift register (LFSR).
  *
  * @class
+ * @augments LFSR
  *
- * @example A 3-tap m-sequence (maximum-length sequence)
- *   var size = 3
- *   var lfsr = new FibonacciLFSR(size, [size, 2])
- *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
- *   //=> 1, "1"
+ * @example <caption>A 3-tap m-sequence (maximum-length sequence)</caption>
+ * var size = 3
+ * var lfsr = new FibonacciLFSR(size, [size, 2])
+ * console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ * //=> 1, "1"
  *
- *   for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
- *     var bit = lfsr.next()
+ * for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
+ *   var bit = lfsr.next()
  *
- *     console.log(bit, bit.toString(2))
- *   }
- *   // XXX verify below output
- *   //=> 6, "0"
- *   //=> 3, "1"
- *   //=> 7, "1"
- *   //=> 5, "1"
- *   //=> 4, "0"
- *   //=> 2, "0"
- *   //=> 1, "1"
+ *   console.log(bit, bit.toString(2))
+ * }
+ * // XXX verify below output
+ * //=> 6, "0"
+ * //=> 3, "1"
+ * //=> 7, "1"
+ * //=> 5, "1"
+ * //=> 4, "0"
+ * //=> 2, "0"
+ * //=> 1, "1"
  *
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -34,9 +35,10 @@ class FibonacciLFSR extends LFSR {
    * Generate the next state in the sequence.
    *
    * @returns {number} The output bit.
+   * @override
    *
    * @example
-   *   XXX
+   * XXX
    */
   next() {
     let state = this.current_state

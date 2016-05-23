@@ -26,15 +26,15 @@ function uniq(array) {
  *
  * @class
  *
- * @example Setting an integer seed
- *   var lfsr = new LFSR(3, [3, 2], 6)
- *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
- *   //=> 6, "110"
+ * @example <caption>Setting an integer seed</caption>
+ * var lfsr = new LFSR(3, [3, 2], 6)
+ * console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ * //=> 6, "110"
  *
- * @example Setting a binary seed
- *   var lfsr = new LFSR(3, [3, 2], "110")
- *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
- *   //=> 6, "110"
+ * @example <caption>Setting a binary seed</caption>
+ * var lfsr = new LFSR(3, [3, 2], "110")
+ * console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ * //=> 6, "110"
  *
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -45,6 +45,7 @@ class LFSR {
    * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
    *   output (range `1..m` inclusive).
    * @param {(number|string)} [seed=1] - Starting value for the generator.
+   * @throws {TypeError}
    */
   constructor(m = 1, feedback_taps = [1], seed = 1) {
     if (typeof m !== 'number') throw new TypeError('m must be Number')
@@ -72,6 +73,8 @@ class LFSR {
   }
 
   /**
+   * @throws {Error}
+   * @instance
    * @private
    */
   next() {
@@ -147,9 +150,9 @@ class LFSR {
    * @static
    *
    * @example
-   *     var lfsr = new LFSR(3, [3, 2])
-   *     console.log(lfsr.feedback_tap_mask.toString(2))
-   *     #=> '110'
+   * var lfsr = new LFSR(3, [3, 2])
+   * console.log(lfsr.feedback_tap_mask.toString(2))
+   * //=> "110"
    */
   get feedback_tap_mask() {
     if (this._feedback_tap_mask) return this._feedback_tap_mask
