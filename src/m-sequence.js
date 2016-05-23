@@ -1,4 +1,4 @@
-import LFSR from './lfsr'
+import GaloisLFSR from './galois-lfsr'
 
 // @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
 const taps_lookup = [
@@ -43,45 +43,39 @@ const taps_lookup = [
  * sequence).
  *
  * @class
- * @extends LFSR
+ * @augments GaloisLFSR
  *
- * @example A 3-tap m-sequence
- *   var size = 3
- *   var lfsr = new MSequence(size)
- *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
- *   //=> 1, "1"
+ * @example <caption>A 3-tap m-sequence</caption>
+ * var lfsr = new MSequence(3)
+ * console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ * //=> 1, "1"
  *
- *   // An LFSR has a maximum of 2**m - 1 valid/useful states: if the LFSR is
- *   // seeded with all zeroes the input bit can never change, so the output
- *   // will always be 0.
- *   var sequence_length = Math.pow(2, size) - 1
- *   for (var n = 1; n < (sequence_length + 1); n++) {
- *     var state = lfsr.next()
+ * for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
+ *   var bit = lfsr.next()
  *
- *     console.log(state, state.toString(2))
- *   }
- *   //=> 6, "110"
- *   //=> 3, "11"
- *   //=> 7, "111"
- *   //=> 5, "101"
- *   //=> 4, "100"
- *   //=> 2, "10"
- *   //=> 1, "1"
+ *   console.log(lfsr.current_state, bit.toString(2))
+ * }
+ * //=> 6, "0"
+ * //=> 3, "1"
+ * //=> 7, "1"
+ * //=> 5, "1"
+ * //=> 4, "0"
+ * //=> 2, "0"
+ * //=> 1, "1"
  *
- * @example Setting an integer seed
- *   var lfsr = new MSequence(3, 6)
- *   var state = lfsr.next()
- *   console.log(state, state.toString(2))
- *   //=> 3, "11"
- *
+ * @example <caption>Setting an integer seed</caption>
+ * var lfsr = new MSequence(3, 6)
+ * var state = lfsr.next()
+ * console.log(state, state.toString(2))
+ * //=> 3, "11"
  *
  * @see https://en.wikipedia.org/wiki/Maximum_length_sequence
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
  */
-class MSequence extends LFSR {
-  /*
-   * @param {number} m - number of taps in the register
-   * @param {(number|string)} [seed] - starting value for the generator
+class MSequence extends GaloisLFSR {
+  /**
+   * @param {number} m - Number of taps in the register.
+   * @param {(number|string)} [seed] - Starting value for the generator.
    * @override
    */
   constructor(m, seed) {
