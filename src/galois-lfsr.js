@@ -32,7 +32,7 @@ class GaloisLFSR extends LFSR {
   /**
    * Generate the next state in the sequence.
    *
-   * @return {number} the output bit
+   * @returns {number} The output bit.
    *
    * @example
    *   var lfsr = new GaloisLFSR(3, [3, 1], 6)

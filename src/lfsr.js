@@ -3,8 +3,8 @@ import 'babel-polyfill'
 /**
  * Filter an array to unique items.
  *
- * @param {array} array - the array to process
- * @return {array} the unique items in `array`
+ * @param {Array} array - The array to process.
+ * @returns {Array} The unique items in `array`.
  * @private
  */
 function uniq(array) {
@@ -41,12 +41,12 @@ function uniq(array) {
  */
 class LFSR {
   /**
-   * @param {number} m - number of taps in the register
-   * @param {number[]} [feedback_taps=[1]] - indices of taps that affect the
-   *   output (range `1..m` inclusive)
-   * @param {(number|string)} [seed=1] - starting value for the generator
+   * @param {number} m - Number of taps in the register.
+   * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
+   *   output (range `1..m` inclusive).
+   * @param {(number|string)} [seed=1] - Starting value for the generator.
    */
-  constructor(m=1, feedback_taps=[1], seed=1) {
+  constructor(m = 1, feedback_taps = [1], seed = 1) {
     if (typeof m !== 'number') throw new TypeError('m must be Number')
 
     // Make sure the entire `m` sequence can be stored in a `Number` even if
@@ -81,8 +81,8 @@ class LFSR {
   /**
    * LFSRs have a maximum of `2**m` states. One of those is fairly useless: if
    * seeded with all `0`s, the LFSR will never transition to any other state.
-   * However, LFSR can never transition *into* that state either, so the
-   * LFSR can cycle through a maximum of `2**m - 1` states.
+   * However, LFSR can never transition *into* that state either, so the LFSR
+   * can cycle through a maximum of `2**m - 1` states.
    *
    * @type {number}
    * @static
