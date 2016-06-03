@@ -75,7 +75,9 @@ describe('GaloisLFSR', () => {
                          0b0, 0b1, 0b1, 0b1, 0b1, 0b1, 0b0, 0b1, 0b1]
 
       let sequence = []
-      for (let n = 1; n <= Math.pow(2, 5) - 1; n++) sequence.push(lfsr.next())
+      for (let n = 1; n <= lfsr.maximum_sequence_length; n++) {
+        sequence.push(lfsr.next())
+      }
 
       assert.deepEqual(sequence, reference)
     })
@@ -91,7 +93,7 @@ describe('GaloisLFSR', () => {
                          0b11111]
 
       let sequence = []
-      for (let n = 1; n <= Math.pow(2, 5) - 1; n++) {
+      for (let n = 1; n <= lfsr.maximum_sequence_length; n++) {
         lfsr.next()
         sequence.push(lfsr.current_state)
       }
