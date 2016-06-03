@@ -44,10 +44,10 @@ class FibonacciLFSR extends LFSR {
 
     // The input bit is the binary sum (XOR) of the feedback taps' values.
     //
-    // It looks odd to use just `taps` as the predicate with no comparisons,
-    // but it means the loop will exit as soon as `taps` is bit shifted to be
-    // all `0`s. If there are only a few taps set early in the mask this skips
-    // a lot of useless iteration.
+    // It looks odd to use just `active_tapped_bits` as the predicate with no
+    // comparisons, but it means the loop will exit as soon as
+    // `active_tapped_bits` is bit shifted to be all `0`s. If there are only a
+    // few taps, set early in the mask, this skips a lot of useless iteration.
     //
     // @see http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
     let active_tapped_bits = state & this.feedback_tap_mask
