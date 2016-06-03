@@ -50,20 +50,13 @@ class FibonacciLFSR extends LFSR {
     // all `0`s. If there are only a few taps set early in the mask this skips
     // a lot of useless iteration.
     //
-    // @note This could also be implemented as:
-    //     let tap_count = 0
-    //     for (...) { tap_count += state_clone & 1 }
-    //     input_bit ^= tap_count % 2
-    //
     // @see http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
-    let input_bit = 0
-    let taps = this.feedback_tap_mask
-    for (let state_clone = state; taps; state_clone >>= 1, taps >>= 1) {
-      // Only adjust `input_bit` for active taps.
-      if (!(taps & 1)) continue
-
-      input_bit ^= state_clone & 1
+    let active_tapped_bits = state & this.feedback_tap_mask
+    let active_bit_count = 0
+    for (; active_tapped_bits; active_bit_count++) {
+      active_tapped_bits &= active_tapped_bits - 1
     }
+    let input_bit = active_bit_count % 2
 
     // Drop previous output bit.
     state >>= 1
