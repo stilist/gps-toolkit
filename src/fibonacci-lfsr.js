@@ -91,8 +91,8 @@ class FibonacciLFSR extends LFSR {
     // Fibonacci LFSRs always use the last tap (`tap_j = m`). It will be
     // manually added in as part of setting the tap mask.
     const adjusted = taps.filter((tap_j) => tap_j < this.m).
-      map((tap_j) => this.m - tap_j)
-    adjusted.push(this.m)
+      map((tap_j) => this.m - (tap_j - 1))
+    adjusted.push(1)
 
     return adjusted
   }

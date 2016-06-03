@@ -10,8 +10,8 @@ describe('FibonacciLFSR', () => {
     })
 
     it('uses custom Fibonacci feedback_taps', () => {
-      const lfsr = new DescribedClass(5, [5, 3, 4])
-      assert.equal(lfsr.feedback_tap_mask, 0b10011)
+      const lfsr = new DescribedClass(5, [5, 3])
+      assert.equal(lfsr.feedback_tap_mask, 0b00101)
     })
 
     it('uses automatically inserts final feedback tap', () => {
