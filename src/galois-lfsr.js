@@ -37,22 +37,20 @@ class GaloisLFSR extends LFSR {
    * @override
    *
    * @example <caption>How the next state is calculated</caption>
-   * var lfsr = new GaloisLFSR(3, [3, 1], 6)
-   * lfsr.current_state
-   * //=> 0b110 (6)
-   * lfsr.feedback_tap_mask
-   * //=> 0b101
-   * input = state & 1
-   * // input = 0b0
-   * //=> 0b0 (0)
-   * state >>= 1
-   * //=> 0b011 (3)
-   * state ^= (-input) & this.feedback_tap_mask
-   * // state ^= (0b11111111111111111111111111111111 & 0b101)
-   * // state ^= 0b110
-   * //=> 0b011 (3)
-   * state & 1
-   * //=> 0b1 (1)
+   *   var lfsr = new GaloisLFSR(3, [3, 1], 6)
+   *   var state = lfsr.current_state // 6
+   *   //=> 0b110
+   *   var input = state & 1 // 0
+   *   //=> 0b0
+   *   state >>= 1 // 3
+   *   //=> 0b011
+   *   state ^= (-input) & lfsr.feedback_tap_mask
+   *   // = state ^= (0b11111111111111111111111111111111 & 0b101)
+   *   // = state ^= 0b110
+   *   // = 3
+   *   //=> 0b011
+   *   state & 1 // 1
+   *   //=> 0b1
    */
   next() {
     let state = this.current_state
