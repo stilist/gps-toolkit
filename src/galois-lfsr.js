@@ -18,12 +18,12 @@ import LFSR from './lfsr'
  *
  *   console.log(lfsr.current_state, bit.toString(2))
  * }
- * //=> 6, "0"
- * //=> 3, "1"
- * //=> 7, "1"
- * //=> 5, "1"
- * //=> 4, "0"
- * //=> 2, "0"
+ * //=> 0, "0"
+ * //=> 1, "1"
+ * //=> 1, "1"
+ * //=> 1, "1"
+ * //=> 0, "0"
+ * //=> 0, "0"
  * //=> 1, "1"
  *
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
