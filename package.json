@@ -28,15 +28,15 @@
     "mocha": "~2.5.0"
   },
   "scripts": {
+    "build": "babel src/ --out-dir lib/ --source-maps",
     "doc": "jsdoc src/ --configure jsdoc.json --destination doc",
-
     "lint": "eslint src/ test/",
-    "pretest": "npm run lint",
+
+    "pretest": "npm run lint && npm run build",
     "test": "npm run test:spec",
     "test:spec": "mocha test/*.spec.js",
+    "posttest": "npm run doc",
 
-    "prebuild": "npm run doc && npm test",
-    "build": "babel src/ --out-dir lib/ --source-maps",
-    "preversion": "npm run build"
+    "preversion": "npm test"
   }
 }
