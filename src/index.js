@@ -1,6 +1,6 @@
 import 'babel-polyfill'
-import LFSR from './lfsr'
-import MSequence from './m-sequence'
 
-export let lfsr = LFSR
-export let m_sequence = MSequence
+export { FibonacciLFSR } from './fibonacci-lfsr'
+export { GaloisLFSR } from './galois-lfsr'
+export { MSequence } from './m-sequence'
+export { LFSR } from './lfsr'
