@@ -36,8 +36,28 @@ class FibonacciLFSR extends LFSR {
    * @returns {number} The output bit.
    * @override
    *
-   * @example
-   * XXX
+   * @example <caption>How the next state is calculated</caption>
+   *   var lfsr = new FibonacciLFSR(3, [3, 1], 4)
+   *   var state = lfsr.current_state // 4
+   *   //=> 0b100
+   *   var active_tapped_bits = state & this.feedback_tap_mask
+   *   // = 0b100 & 0b101
+   *   // = 4
+   *   //=> 0b100
+   *   var active_bit_count = 0
+   *   for (; active_tapped_bits; active_bit_count++) {
+   *     active_tapped_bits &= active_tapped_bits - 1
+   *   }
+   *   var input_bit = active_bit_count % 2
+   *   // = 1 % 2
+   *   //=> 1
+   *   state >>= 1 // 2
+   *   //=> 0b010
+   *   state |= (input_bit << (this.m - 1))
+   *   // = 1 << (3 - 1)
+   *   //=> 110
+   *   state & 1 // 0
+   *   //=> 0
    */
   next() {
     let state = this.current_state
