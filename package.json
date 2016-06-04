@@ -29,9 +29,9 @@
     "doc": "jsdoc src/ --configure jsdoc.json --destination doc",
 
     "lint": "eslint src/ test/",
-
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-core/register test/*.spec.js",
+    "test": "npm run test:spec",
+    "test:spec": "mocha test/*.spec.js",
 
     "prebuild": "npm run doc && npm test",
     "build": "babel src/index.js --out-file lib/index.js --source-maps",
