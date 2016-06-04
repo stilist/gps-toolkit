@@ -5,7 +5,8 @@ import 'babel-polyfill'
  *
  * @param {Array} array - The array to process.
  * @returns {Array} The unique items in `array`.
- * @private
+ *
+ * @access private
  */
 function uniq(array) {
   if (typeof array.length === 'undefined') return []
@@ -24,17 +25,15 @@ function uniq(array) {
 /**
  * A base implementation of a linear feedback shift register (LFSR).
  *
- * @class
- *
  * @example <caption>Setting an integer seed</caption>
- * var lfsr = new LFSR(3, [3, 2], 6)
- * console.log(lfsr.current_state, lfsr.current_state.toString(2))
- * //=> 6, "110"
+ *   var lfsr = new LFSR(3, [3, 2], 6)
+ *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ *   //=> 6, "110"
  *
  * @example <caption>Setting a binary seed</caption>
- * var lfsr = new LFSR(3, [3, 2], "110")
- * console.log(lfsr.current_state, lfsr.current_state.toString(2))
- * //=> 6, "110"
+ *   var lfsr = new LFSR(3, [3, 2], "110")
+ *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ *   //=> 6, "110"
  *
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -45,6 +44,7 @@ class LFSR {
    * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
    *   output (range `1..m` inclusive).
    * @param {(number|string)} [seed=1] - Starting value for the generator.
+   *
    * @throws {TypeError}
    */
   constructor(m = 1, feedback_taps = [1], seed = 1) {
@@ -73,10 +73,12 @@ class LFSR {
   }
 
   /**
+   * Generate the next state in the sequence.
+   *
+   * @returns {number} The output bit.
    * @throws {Error}
+   *
    * @abstract
-   * @instance
-   * @private
    */
   next() {
     throw new Error('`next` must be implemented by subclasses')
@@ -89,7 +91,6 @@ class LFSR {
    * can cycle through a maximum of `2**m - 1` states.
    *
    * @type {number}
-   * @static
    */
   get maximum_sequence_length() {
     if (this._maximum_sequence_length) return this._maximum_sequence_length
@@ -104,7 +105,6 @@ class LFSR {
    * Validates the user's seed and sets a fallback value.
    *
    * @type {number}
-   * @static
    */
   get seed() {
     if (this._seed) return this._seed
@@ -127,8 +127,8 @@ class LFSR {
    * Validate and process feedback tap indices.
    *
    * @type {number[]}
-   * @protected
-   * @static
+   *
+   * @access protected
    */
   get sanitized_feedback_taps() {
     if (this._sanitized_feedback_taps) return this._sanitized_feedback_taps
@@ -147,13 +147,13 @@ class LFSR {
    * Converts the list of tap indices into a corresponding bitmask.
    *
    * @type {number}
-   * @private
-   * @static
    *
-   * @example
-   * var lfsr = new LFSR(3, [3, 2])
-   * console.log(lfsr.feedback_tap_mask.toString(2))
-   * //=> "110"
+   * @access private
+   *
+   * @example <caption>An example tap mask</caption>
+   *   var lfsr = new LFSR(3, [3, 2])
+   *   console.log(lfsr.feedback_tap_mask.toString(2))
+   *   //=> "110"
    */
   get feedback_tap_mask() {
     if (this._feedback_tap_mask) return this._feedback_tap_mask

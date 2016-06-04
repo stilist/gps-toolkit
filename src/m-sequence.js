@@ -46,28 +46,27 @@ const taps_lookup = [
  * @augments GaloisLFSR
  *
  * @example <caption>A 3-tap m-sequence</caption>
- * var lfsr = new MSequence(3)
- * console.log(lfsr.current_state, lfsr.current_state.toString(2))
- * //=> 1, "1"
+ *   var lfsr = new MSequence(3)
+ *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ *   //=> 1, "1"
  *
- * for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
- *   var bit = lfsr.next()
+ *   for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
+ *     var bit = lfsr.next()
  *
- *   console.log(lfsr.current_state, bit.toString(2))
- * }
- * //=> 6, "0"
- * //=> 3, "1"
- * //=> 7, "1"
- * //=> 5, "1"
- * //=> 4, "0"
- * //=> 2, "0"
- * //=> 1, "1"
+ *     console.log(lfsr.current_state, bit.toString(2))
+ *   }
+ *   //=> 6, "0"
+ *   //=> 3, "1"
+ *   //=> 7, "1"
+ *   //=> 5, "1"
+ *   //=> 4, "0"
+ *   //=> 2, "0"
+ *   //=> 1, "1"
  *
  * @example <caption>Setting an integer seed</caption>
- * var lfsr = new MSequence(3, 6)
- * var state = lfsr.next()
- * console.log(state, state.toString(2))
- * //=> 3, "11"
+ *   var lfsr = new MSequence(3, 6)
+ *   var state = lfsr.next() // 3
+ *   //=> 0b011
  *
  * @see https://en.wikipedia.org/wiki/Maximum_length_sequence
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -76,6 +75,7 @@ class MSequence extends GaloisLFSR {
   /**
    * @param {number} m - Number of taps in the register.
    * @param {(number|string)} [seed] - Starting value for the generator.
+   *
    * @override
    */
   constructor(m, seed) {

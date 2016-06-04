@@ -4,27 +4,32 @@ import LFSR from './lfsr'
 /**
  * A Fibonacci implementation of a linear feedback shift register (LFSR).
  *
- * @class
+ * @param {number} m - Number of taps in the register.
+ * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
+ *   output (range `1..m` inclusive).
+ * @param {(number|string)} [seed=1] - Starting value for the generator.
+ *
  * @augments LFSR
+ * @throws {TypeError}
  *
  * @example <caption>A 3-tap m-sequence (maximum-length sequence)</caption>
- * var size = 3
- * var lfsr = new FibonacciLFSR(size, [size, 2])
- * console.log(lfsr.current_state, lfsr.current_state.toString(2))
- * //=> 1, "1"
+ *   var size = 3
+ *   var lfsr = new FibonacciLFSR(size, [size, 2])
+ *   console.log(lfsr.current_state, lfsr.current_state.toString(2))
+ *   //=> 1, "1"
  *
- * for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
- *   var bit = lfsr.next()
+ *   for (var n = 1; n <= lfsr.maximum_sequence_length; n++) {
+ *     var bit = lfsr.next()
  *
- *   console.log(bit, bit.toString(2))
- * }
- * //=> 0, "0"
- * //=> 0, "0"
- * //=> 1, "1"
- * //=> 0, "0"
- * //=> 1, "1"
- * //=> 1, "1"
- * //=> 1, "1"
+ *     console.log(lfsr.current_state, bit.toString(2))
+ *   }
+ *   //=> 4, "0"
+ *   //=> 2, "0"
+ *   //=> 5, "1"
+ *   //=> 6, "0"
+ *   //=> 7, "1"
+ *   //=> 3, "1"
+ *   //=> 1, "1"
  *
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
@@ -34,7 +39,6 @@ class FibonacciLFSR extends LFSR {
    * Generate the next state in the sequence.
    *
    * @returns {number} The output bit.
-   * @override
    *
    * @example <caption>How the next state is calculated</caption>
    *   var lfsr = new FibonacciLFSR(3, [3, 1], 4)
@@ -93,9 +97,6 @@ class FibonacciLFSR extends LFSR {
    * Validate and process feedback tap indices.
    *
    * @type {number[]}
-   * @override
-   * @protected
-   * @static
    */
   get sanitized_feedback_taps() {
     const taps = super.sanitized_feedback_taps
