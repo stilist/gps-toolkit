@@ -3,6 +3,16 @@ import assert from 'assert'
 import DescribedClass from '../src/fibonacci-lfsr'
 
 describe('FibonacciLFSR', () => {
+  describe('.sequence', () => {
+    it('matches the output of #next', () => {
+      const lfsr = new DescribedClass(5, [5, 3], 0b00001)
+      // @see http://pages.hmc.edu/harris/class/e11/lect7.pdf, slide 14
+      const reference = 0b1000010010110011111000110111010
+
+      assert.equal(lfsr.sequence, reference)
+    })
+  })
+
   describe('#next', () => {
     it('iterates with seed 0', () => {
       const lfsr = new DescribedClass(1, [1], 0b0)

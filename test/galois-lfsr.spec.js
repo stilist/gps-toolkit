@@ -3,6 +3,16 @@ import assert from 'assert'
 import DescribedClass from '../src/galois-lfsr'
 
 describe('GaloisLFSR', () => {
+  describe('.sequence', () => {
+    it('matches the output of #next', () => {
+      // @see http://paginas.fe.up.pt/~hmiranda/cm/Pseudo_Noise_Sequences.pdf
+      const lfsr = new DescribedClass(5, [5, 4, 2, 1], 0b11111)
+      const reference = 0b1001110000110101001000101111101
+
+      assert.equal(lfsr.sequence, reference)
+    })
+  })
+
   describe('#next', () => {
     it('iterates with seed 0', () => {
       const lfsr = new DescribedClass(1, [1], 0b0)

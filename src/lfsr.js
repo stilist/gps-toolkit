@@ -144,6 +144,32 @@ class LFSR {
   }
 
   /**
+   * The complete LFSR sequence.
+   *
+   * @type {number}
+   *
+   * @todo Is there a way to calculate the length of non-maximal sequences
+   *   instead of watching for the state to repeat? (The current approach
+   *   has to call {@linkcode LFSR#next} an extra time, which goofs up the
+   *   internal state.)
+   */
+  get sequence() {
+    if (this._sequence) return this._sequence
+
+    const bits = [this.seed & 0b1]
+    for (let i = 0; ; i++) {
+      let bit = this.next()
+
+      if (this.current_state === this.seed) break
+      else bits.push(bit)
+    }
+
+    this._sequence = parseInt(bits.join(''), 2)
+
+    return this._sequence
+  }
+
+  /**
    * Converts the list of tap indices into a corresponding bitmask.
    *
    * @type {number}
