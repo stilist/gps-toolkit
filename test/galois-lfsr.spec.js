@@ -110,23 +110,5 @@ describe('GaloisLFSR', () => {
 
       assert.deepEqual(sequence, reference)
     })
-
-    // // XXX
-    // it('XXX', () => {
-    //   const lfsr = new DescribedClass(10, [10, 3], 0b1111111111)
-    //   const reference = 0b0010001110
-    //
-    //   function pad(str, n) {
-    //     return ('0'.repeat(n) + str).slice(-n)
-    //   }
-    //
-    //   console.log(pad(lfsr.current_state.toString(2), 10), pad(reference.toString(2), 10));
-    //   for (let n = 1; n <= 12; n++) {
-    //     lfsr.next()
-    //     console.log(pad(lfsr.current_state.toString(2), 10), pad(reference.toString(2), 10));
-    //   }
-    //
-    //   assert.equal(lfsr.current_state, reference)
-    // })
   })
 })
