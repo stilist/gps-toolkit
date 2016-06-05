@@ -82,6 +82,15 @@ describe('LFSR', () => {
     })
   })
 
+  describe('.sequence', () => {
+    it('throws an error', () => {
+      assert.throws(() => {
+        const lfsr = new DescribedClass(3)
+        lfsr.sequence
+      }, Error)
+    })
+  })
+
   describe('#next()', () => {
     const lfsr = new DescribedClass(3)
     assert.throws(() => { lfsr.next() },
