@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import LFSR from './lfsr'
+import population_count from './utilities/population-count'
 
 /**
  * A Fibonacci implementation of a linear feedback shift register (LFSR).
@@ -67,18 +68,8 @@ class FibonacciLFSR extends LFSR {
     let state = this.current_state
 
     // The input bit is the binary sum (XOR) of the feedback taps' values.
-    //
-    // It looks odd to use just `active_tapped_bits` as the predicate with no
-    // comparisons, but it means the loop will exit as soon as
-    // `active_tapped_bits` is bit shifted to be all `0`s. If there are only a
-    // few taps, set early in the mask, this skips a lot of useless iteration.
-    //
-    // @see http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
     let active_tapped_bits = state & this.feedback_tap_mask
-    let active_bit_count = 0
-    for (; active_tapped_bits; active_bit_count++) {
-      active_tapped_bits &= active_tapped_bits - 1
-    }
+    let active_bit_count = population_count(active_tapped_bits)
     let input_bit = active_bit_count % 2
 
     // Drop previous output bit.

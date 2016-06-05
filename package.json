@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "babel src/ --out-dir lib/ --source-maps",
-    "doc": "jsdoc src/ --configure jsdoc.json --destination doc",
+    "doc": "jsdoc src/*.js src/**/*.js --configure jsdoc.json --destination doc",
     "lint": "eslint src/ test/",
 
     "pretest": "npm run lint && npm run build",
