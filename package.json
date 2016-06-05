@@ -34,7 +34,7 @@
 
     "pretest": "npm run lint && npm run build",
     "test": "npm run test:spec",
-    "test:spec": "mocha test/*.spec.js",
+    "test:spec": "mocha test/*.spec.js test/**/*.spec.js",
     "posttest": "npm run doc",
 
     "preversion": "npm test"
