@@ -70,13 +70,15 @@ describe('LFSR', () => {
       const lfsr = new DescribedClass(3, [1], '11')
       assert.equal(lfsr.current_state, 0b11)
     })
+  })
 
+  describe('.seed', () => {
     it('sanitizes custom Number seed', () => {
       const lfsr = new DescribedClass(3, [1], 50)
       assert.equal(lfsr.current_state, 0b10)
     })
 
-    it('uses custom String seed', () => {
+    it('sanitizes custom String seed', () => {
       const lfsr = new DescribedClass(3, [1], (50).toString(2))
       assert.equal(lfsr.current_state, 0b10)
     })
