@@ -16,7 +16,10 @@ describe('LFSR', () => {
     })
 
     it('throws an error when maximum sequence length is > MAX_SAFE_INTEGER', () => {
-      assert.throws(() => { new DescribedClass(Number.MAX_SAFE_INTEGER) },
+      const length = Number.MAX_SAFE_INTEGER.
+        toString(2).
+        length
+      assert.throws(() => { new DescribedClass(length + 1) },
                     TypeError)
     })
 
@@ -75,12 +78,12 @@ describe('LFSR', () => {
   describe('.maximum_sequence_length', () => {
     it('matches for m=3', () => {
       const lfsr = new DescribedClass(3)
-      assert.equal(lfsr.maximum_sequence_length, 8)
+      assert.equal(lfsr.maximum_sequence_length, 7)
     })
 
-    it('matches for m=94906265', () => {
-      const lfsr = new DescribedClass(94906265)
-      assert.equal(lfsr.maximum_sequence_length, 9007199136250224)
+    it('matches for m=53', () => {
+      const lfsr = new DescribedClass(53)
+      assert.equal(lfsr.maximum_sequence_length, Math.pow(2, 53) - 1)
     })
   })
 

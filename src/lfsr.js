@@ -53,8 +53,10 @@ class LFSR {
     // Make sure the entire `m` sequence can be stored in a `Number` even if
     // `feedback_taps` is configured to generate an m-sequence.
     this.m = m
-    if (m < 1 || this.maximum_sequence_length > Number.MAX_SAFE_INTEGER) {
-      const max_m = ~~(Math.sqrt(Number.MAX_SAFE_INTEGER))
+    const max_m = Number.MAX_SAFE_INTEGER.
+      toString(2).
+      length
+    if (m < 1 || m > max_m) {
       throw new TypeError(`m must be in the range 1..${max_m} (inclusive)`)
     }
 
@@ -97,7 +99,7 @@ class LFSR {
   get maximum_sequence_length() {
     if (this._maximum_sequence_length) return this._maximum_sequence_length
 
-    const max_length = Math.pow(this.m, 2) - 1
+    const max_length = Math.pow(2, this.m) - 1
 
     this._maximum_sequence_length = max_length
     return max_length
