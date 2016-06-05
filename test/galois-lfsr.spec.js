@@ -13,7 +13,7 @@ describe('GaloisLFSR', () => {
     })
   })
 
-  describe('#next', () => {
+  describe('#next()', () => {
     it('iterates with seed 0', () => {
       const lfsr = new DescribedClass(1, [1], 0b0)
       assert.equal(lfsr.next(), 0b0)

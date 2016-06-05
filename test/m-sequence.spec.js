@@ -3,7 +3,7 @@ import assert from 'assert'
 import DescribedClass from '../src/m-sequence'
 
 describe('MSequence', () => {
-  describe('#initialize', () => {
+  describe('#constructor()', () => {
     /* eslint-disable no-new */
     it('works with just m', () => {
       assert.doesNotThrow(() => { new DescribedClass(3) },
@@ -37,7 +37,7 @@ describe('MSequence', () => {
     })
   })
 
-  describe('#next', () => {
+  describe('#next()', () => {
     it('iterates with seed 0', () => {
       const lfsr = new DescribedClass(1, 0b0)
       assert.equal(lfsr.next(), 0b0)

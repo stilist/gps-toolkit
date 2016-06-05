@@ -3,7 +3,7 @@ import assert from 'assert'
 import DescribedClass from '../src/lfsr'
 
 describe('LFSR', () => {
-  describe('#initialize', () => {
+  describe('#constructor()', () => {
     /* eslint-disable no-new */
     it('throws an error when m is not a Number', () => {
       assert.throws(() => { new DescribedClass('a') },
@@ -82,7 +82,7 @@ describe('LFSR', () => {
     })
   })
 
-  describe('#next', () => {
+  describe('#next()', () => {
     const lfsr = new DescribedClass(3)
     assert.throws(() => { lfsr.next() },
                   Error)
