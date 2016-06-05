@@ -91,6 +91,8 @@ class LFSR {
    * can cycle through a maximum of `2**m - 1` states.
    *
    * @type {number}
+   *
+   * @todo Replace with `.length`. (See {@linkcode LFSR.sequence}.)
    */
   get maximum_sequence_length() {
     if (this._maximum_sequence_length) return this._maximum_sequence_length
