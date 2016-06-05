@@ -95,7 +95,7 @@ class LFSR {
   get maximum_sequence_length() {
     if (this._maximum_sequence_length) return this._maximum_sequence_length
 
-    const max_length = Math.pow(2, this.m) - 1
+    const max_length = Math.pow(this.m, 2) - 1
 
     this._maximum_sequence_length = max_length
     return max_length

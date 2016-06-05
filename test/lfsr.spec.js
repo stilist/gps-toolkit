@@ -72,6 +72,18 @@ describe('LFSR', () => {
     })
   })
 
+  describe('.maximum_sequence_length', () => {
+    it('matches for m=3', () => {
+      const lfsr = new DescribedClass(3)
+      assert.equal(lfsr.maximum_sequence_length, 8)
+    })
+
+    it('matches for m=94906265', () => {
+      const lfsr = new DescribedClass(94906265)
+      assert.equal(lfsr.maximum_sequence_length, 9007199136250224)
+    })
+  })
+
   describe('.seed', () => {
     it('sanitizes custom Number seed', () => {
       const lfsr = new DescribedClass(3, [1], 50)
