@@ -3,32 +3,34 @@ import assert from 'assert'
 import * as described from '../../src/utilities/preferred-sequence'
 
 describe('is_preferred_sequence()', () => {
-  it('throws an error for non-numbers', () => {
+  it('throws an error if correlations is not an array', () => {
     assert.throws(() => { described.is_preferred_sequence('a') },
                   TypeError)
   })
 
   it('throws an error for invalid lengths', () => {
-    assert.throws(() => { described.is_preferred_sequence(1) },
+    assert.throws(() => { described.is_preferred_sequence([1], 1) },
                   TypeError)
   })
 
-  it('uses length if passed', () => {
-    let result = described.is_preferred_sequence([-1, -9, 7], 5)
-
-    assert.equal(result, true)
-  })
-
   it('passes valid sequence', () => {
-    let result = described.is_preferred_sequence([-1, -5, 3])
+    let result = described.is_preferred_sequence([-1, -5, 3], 3)
 
     assert.equal(result, true)
   })
 
   it('fails invalid sequence', () => {
-    let result = described.is_preferred_sequence([-1, -4, 2])
+    let result = described.is_preferred_sequence([-1, -4, 2], 3)
 
     assert.equal(result, false)
+  })
+
+  it('passes longer sequence', () => {
+    let sequence = [-1, -1, -1, -9, -9, -9, -1, 7, 7, -9, -1, 7, 7, -1, -1, -1,
+                     7, 7, -9, -9, -1, 7, -1, -9, -1, 7, 7, 7, -1, -1, -1]
+    let result = described.is_preferred_sequence(sequence, 5)
+
+    assert.equal(result, true)
   })
 })
 
