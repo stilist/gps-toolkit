@@ -286,6 +286,235 @@ the number of matched and mismatched bits.</p>
 
     
 
+    <h4 class="name" id="is_preferred_sequence"><span class="type-signature"></span>is_preferred_sequence<span class="signature">(correlations, length<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Determine whether a set of correlations is a preferred sequence. (That is,
+whether <code>correlations</code> only contains the values expected for a sequence of
+the given length.)</p>
+<p><code>length</code> is optional to save effort if you're passing in a complete
+cross-correlation set.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>correlations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The set of correlations.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    correlations.length
+                
+                </td>
+            
+
+            <td class="description last"><p>The length of the complete
+  sequence.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_preferred-sequence.js.html">utilities/preferred-sequence.js</a>, <a href="utilities_preferred-sequence.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Whether the set of correlations is limited to values from
+  the preferred sequence.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="population_count"><span class="type-signature"></span>population_count<span class="signature">(n)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
@@ -444,6 +673,189 @@ the number of matched and mismatched bits.</p>
 
 
         
+            
+
+    
+
+    <h4 class="name" id="preferred_sequence_values"><span class="type-signature"></span>preferred_sequence_values<span class="signature">(length)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the ideal cross-correlation values for a sequence of the given <code>length</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The length of the sequence.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_preferred-sequence.js.html">utilities/preferred-sequence.js</a>, <a href="utilities_preferred-sequence.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="http://www.wirelesscommunication.nl/reference/chaptr05/cdma/codes/gold.htm">http://www.wirelesscommunication.nl/reference/chaptr05/cdma/codes/gold.htm</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The values for a preferred sequence of length <code>length</code>.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Values for length=5</p>
+    
+    <pre class="prettyprint"><code>  preferred_sequence_values(5)
+  //=> [-1, -9, 7]</code></pre>
+
+
+
+        
     
 
     
@@ -459,13 +871,13 @@ the number of matched and mismatched bits.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#population_count">population_count</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 05 2016 08:06:15 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 05 2016 17:43:47 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
