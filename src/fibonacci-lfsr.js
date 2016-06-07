@@ -4,6 +4,7 @@ import population_count from './utilities/population-count'
 
 /**
  * A Fibonacci implementation of a linear feedback shift register (LFSR).
+ * Feedback taps are ordered `1..m`.
  *
  * @param {number} m - Number of taps in the register.
  * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
@@ -32,6 +33,7 @@ import population_count from './utilities/population-count'
  *   //=> 3, "1"
  *   //=> 1, "1"
  *
+ * @see {GaloisLFSR}
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
  */

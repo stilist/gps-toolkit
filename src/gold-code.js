@@ -5,6 +5,8 @@ import FibonacciLFSR from './fibonacci-lfsr'
 /**
  * Implements a Gold code generator.
  *
+ * @augments FibonacciLFSR
+ *
  * @example <caption>A Gold code of size 5</caption>
  *   var gold_code = new GoldCode(5, [5, 2, 3, 4], [5, 3], 0b10)
  *   gold_code.next()
@@ -38,7 +40,7 @@ class GoldCode {
   /**
    * Gold Codes are generated from a pair of {@link LFSR}s.
    *
-   * @access private
+   * @access protected
    * @type {FibonacciLFSR[]}
    */
   get lfsrs() {

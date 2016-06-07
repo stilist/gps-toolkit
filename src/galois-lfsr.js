@@ -2,7 +2,8 @@ import 'babel-polyfill'
 import LFSR from './lfsr'
 
 /**
- * A Galois implementation of a linear feedback shift register (LFSR).
+ * A Galois implementation of a linear feedback shift register (LFSR). Feedback
+ * taps are numbered `m..1`.
  *
  * @param {number} m - Number of taps in the register.
  * @param {number[]} [feedback_taps=[1]] - Indices of taps that affect the
@@ -31,6 +32,7 @@ import LFSR from './lfsr'
  *   //=> 2, "0"
  *   //=> 1, "1"
  *
+ * @see {FibonacciLFSR}
  * @see https://en.wikipedia.org/wiki/Linear_feedback_shift_register
  * @see http://www.newwaveinstruments.com/resources/articles/m_sequence_linear_feedback_shift_register_lfsr.htm
  */
