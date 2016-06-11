@@ -25,7 +25,7 @@ describe('cross_correlate', () => {
     assert.deepEqual(correlation, reference)
   })
 
-  it('cross-correlates Gold Codes', () => {
+  it('cross-correlates Gold codes', () => {
     // @see http://pages.hmc.edu/harris/class/e11/lect7.pdf, slide 32
     let gold_codeA = new GoldCode(5, [5, 2, 3, 4], [5, 3], 0b1)
     let gold_codeB = new GoldCode(5, [5, 2, 3, 4], [5, 3], 0b10)
@@ -34,7 +34,7 @@ describe('cross_correlate', () => {
                      7, 7, -9, -9, -1, 7, -1, -9, -1, 7, 7, 7, -1, -1, -1]
 
     // @note The points on the graph are displayed in reverse order from the
-    //   list of Gold Code functions, so the sequences are passed in reverse
+    //   list of Gold code functions, so the sequences are passed in reverse
     //   to compensate.
     let correlation = described_function(gold_codeB.sequence,
                                          gold_codeA.sequence)

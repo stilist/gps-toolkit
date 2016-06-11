@@ -38,7 +38,7 @@ class GoldCode {
   }
 
   /**
-   * Gold Codes are generated from a pair of {@link LFSR}s.
+   * Gold codes are generated from a pair of {@link LFSR}s.
    *
    * @access protected
    * @type {FibonacciLFSR[]}
@@ -55,7 +55,7 @@ class GoldCode {
   }
 
   /**
-   * The length of the Gold Code sequence.
+   * The length of the Gold code sequence.
    *
    * @type {number}
    */
@@ -69,7 +69,7 @@ class GoldCode {
   }
 
   /**
-   * The complete Gold Code sequence.
+   * The complete Gold code sequence.
    *
    * @type {number}
    */
