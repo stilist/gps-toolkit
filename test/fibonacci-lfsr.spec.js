@@ -67,5 +67,15 @@ describe('FibonacciLFSR', () => {
 
       assert.deepEqual(sequence, reference)
     })
+
+    it('cycles C/A G1', () => {
+      const lfsr = new DescribedClass(10, [10, 3], 0b1111111111)
+      // @see http://what-when-how.com/a-software-defined-gps-and-galileo-receiver/gps-signal-gps-and-galileo-receiver-part-2/
+      const reference = 0b0010001110
+
+      for (let n = 1; n <= 12; n++) lfsr.next()
+
+      assert.equal(lfsr.current_state, reference)
+    })
   })
 })
