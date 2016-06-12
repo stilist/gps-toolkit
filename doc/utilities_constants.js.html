@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: utilities/population-count.js</title>
+    <title>JSDoc: Source: utilities/constants.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: utilities/population-count.js</h1>
+    <h1 class="page-title">Source: utilities/constants.js</h1>
 
     
 
@@ -29,26 +29,11 @@
             <pre class="prettyprint source linenums"><code>import 'babel-polyfill'
 
 /**
- * Count the number of `1`s (non-zero values) in a binary sequence.
- *
- * @param {number} n - The number to test.
- * @returns {number} The number of bits set.
- *
- * @see https://en.wikipedia.org/wiki/Hamming_weight
- * @see http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
  */
-function population_count(n) {
-  let count = 0
-
-  // It looks odd to use just `n` as the predicate with no comparisons, but the
-  // loop will exit as soon as `n` is bit shifted to be all `0`s. If there are
-  // only a few bits set, and they're early in the sequence, this skips a lot
-  // of iteration.
-  for (; n; count++) n &amp;= n - 1
-
-  return count
-}
-export default population_count
+export const bits_in_number = Number.MAX_SAFE_INTEGER.
+  toString(2).
+  length
 </code></pre>
         </article>
     </section>

@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import assert from 'assert'
+import { bits_in_number } from '../src/utilities/constants'
 import DescribedClass from '../src/lfsr'
 
 describe('LFSR', () => {
@@ -16,9 +17,7 @@ describe('LFSR', () => {
     })
 
     it('throws an error when maximum sequence length is > MAX_SAFE_INTEGER', () => {
-      const length = Number.MAX_SAFE_INTEGER.
-        toString(2).
-        length
+      const length = bits_in_number
       assert.throws(() => { new DescribedClass(length + 1) },
                     TypeError)
     })

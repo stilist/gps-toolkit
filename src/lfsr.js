@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import { bits_in_number } from './utilities/constants'
 
 /**
  * Filter an array to unique items.
@@ -53,11 +54,8 @@ class LFSR {
     // Make sure the entire `m` sequence can be stored in a `Number` even if
     // `feedback_taps` is configured to generate an m-sequence.
     this.m = m
-    const max_m = Number.MAX_SAFE_INTEGER.
-      toString(2).
-      length
-    if (m < 1 || m > max_m) {
-      throw new TypeError(`m must be in the range 1..${max_m} (inclusive)`)
+    if (m < 1 || m > bits_in_number) {
+      throw new TypeError(`m must be in the range 1..${bits_in_number} (inclusive)`)
     }
 
     if (typeof feedback_taps.length === 'undefined') {
