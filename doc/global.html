@@ -101,6 +101,243 @@
 
     
 
+    <h4 class="name" id="bits_to_string"><span class="type-signature"></span>bits_to_string<span class="signature">(number, length<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gives a <code>String</code> with the <code>length</code> least significant bits of <code>number</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The number to log.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    53
+                
+                </td>
+            
+
+            <td class="description last"><p>The number of bits to log. Defaults to the
+  number of bits in a <code>Number</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_debug.js.html">utilities/debug.js</a>, <a href="utilities_debug.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The <code>length</code> bits of <code>number</code>.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">With a small number</p>
+    
+    <pre class="prettyprint"><code>  bits_to_string(10, 5)
+  //=> '01010'</code></pre>
+
+        <p class="code-caption">With a larger string</p>
+    
+    <pre class="prettyprint"><code>  bits_to_string(1023, 5)
+  //=> '1111111111'</code></pre>
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="cross_correlate"><span class="type-signature"></span>cross_correlate<span class="signature">(sequenceA, sequenceB)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
 
     
@@ -1093,13 +1330,13 @@ cross-correlation set.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bits_to_string">bits_to_string</a></li><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 05 2016 19:11:08 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jun 11 2016 17:09:47 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
