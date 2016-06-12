@@ -572,9 +572,6 @@ the signal power.</p>
         
 <div class="param-desc">
     <p>The correlation at each offset of <code>sequenceB</code>.</p>
-<p>example <caption>Correlating a sequence with itself (autocorrelation)</caption>
-  cross_correlate(0b110010, 0b110010)
-  //=&gt; [6, -2, -2, 2, -2, -2]</p>
 </div>
 
 
@@ -592,6 +589,14 @@ the signal power.</p>
 </dl>
 
     
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Correlating a sequence with itself (autocorrelation)</p>
+    
+    <pre class="prettyprint"><code>  cross_correlate(0b110010, 0b110010)
+  //=> [6, -2, -2, 2, -2, -2]</code></pre>
 
 
 
@@ -1332,30 +1337,14 @@ cross-correlation set.</p>
 
         
 
-<dl>
-    <dt>
-        <div class="param-desc">
-        <p>example <caption>Values for length=5</caption>
-  preferred_sequence_values(5)
-  //=&gt; [-1, -9, 7]</p>
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
+    <div class="param-desc">
+    
+        
 <span class="param-type">TypeError</span>
 
 
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
+    
+    </div>
 
 
     
@@ -1385,6 +1374,531 @@ cross-correlation set.</p>
     
 
 
+    <h5>Example</h5>
+    
+        <p class="code-caption">Values for length=5</p>
+    
+    <pre class="prettyprint"><code>  preferred_sequence_values(5)
+  //=> [-1, -9, 7]</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="rotate_array"><span class="type-signature"></span>rotate_array<span class="signature">(array, distance<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Rotate <code>distance</code> elements to the head of <code>array</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The array to rotate.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>distance</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>How many elements to move to the head.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_rotate-sequence.js.html">utilities/rotate-sequence.js</a>, <a href="utilities_rotate-sequence.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Handle `distance > array.length`.</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rotated array.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Rotating with default length</p>
+    
+    <pre class="prettyprint"><code>  rotate_array([1, 2, 3])
+  //=> [3, 1, 2]</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="rotate_number_bits"><span class="type-signature"></span>rotate_number_bits<span class="signature">(bits, distance<span class="signature-attributes">opt</span>, bits_length<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Rotate <code>distance</code> bits of a <code>Number</code> to the head of <code>bits</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bits</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The bits of this number will be rotated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>distance</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>How many bits to move to the head.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bits_length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    53
+                
+                </td>
+            
+
+            <td class="description last"><p>The intended length of the bit sequence.
+  Defaults to the number of bits in a <code>Number</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_rotate-sequence.js.html">utilities/rotate-sequence.js</a>, <a href="utilities_rotate-sequence.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Handle `distance > bits_length`.</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rotated <code>bits</code>. The return type matches the
+  input type.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">With default distance and bits_length</p>
+    
+    <pre class="prettyprint"><code>  rotate_number_bits(0b1)
+  //=> parseInt('10000000000000000000000000000000000000000000000000000', 2)</code></pre>
+
+
 
         
     
@@ -1402,13 +1916,13 @@ cross-correlation set.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bits_in_number">bits_in_number</a></li><li><a href="global.html#bits_to_string">bits_to_string</a></li><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bits_in_number">bits_in_number</a></li><li><a href="global.html#bits_to_string">bits_to_string</a></li><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li><li><a href="global.html#rotate_array">rotate_array</a></li><li><a href="global.html#rotate_number_bits">rotate_number_bits</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jun 11 2016 17:18:29 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jun 11 2016 21:47:22 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

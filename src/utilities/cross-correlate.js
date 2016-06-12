@@ -1,26 +1,6 @@
 import 'babel-polyfill'
 import dot_product from './dot-product'
-
-/**
- * Rotate `distance` members to the head of `sequence`.
- *
- * @param {number[]} sequence - The array to rotate.
- * @param {number} [distance=1] - How many members to move.
- *
- * @access private
- * @throws {TypeError}
- *
- * @todo Handle `distance > sequence.length`.
- */
-function rotate_sequence(sequence, distance = 1) {
-  if (!sequence.length) throw new TypeError('sequence must be an Array')
-  if (typeof distance !== 'number') throw new TypeError('distance must be a Number')
-
-  const head = sequence.slice(0, -distance)
-  const tail = sequence.slice(sequence.length - distance)
-
-  return tail.concat(head)
-}
+import { rotate_array } from './rotate-sequence'
 
 /**
  * > In signal processing, cross-correlation is a measure of similarity of two
@@ -53,7 +33,7 @@ function cross_correlate(sequenceA, sequenceB) {
 
   let correlations = [dot_product(sequenceA, sequenceB, length)]
   for (let offset = 1; offset < length; offset++) {
-    let rotated = rotate_sequence(bitsB, offset)
+    let rotated = rotate_array(bitsB, offset)
 
     let sequence = parseInt(rotated.join(''), 2)
     let correlation = dot_product(sequenceA, sequence, length)
