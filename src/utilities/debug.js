@@ -6,8 +6,8 @@ import pad_bits from './pad-bits'
  * Gives a `String` with the `length` least significant bits of `number`.
  *
  * @param {number} number - The number to log.
- * @param {number} [length=53] - The number of bits to log. Defaults to the
- *   number of bits in a `Number`.
+ * @param {number} [length=53] - The number of bits to log. Defaults to
+ *   {@linkcode bits_in_number}.
  * @returns {string} The `length` bits of `number`.
  *
  * @throws {TypeError}
