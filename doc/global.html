@@ -1047,6 +1047,235 @@ cross-correlation set.</p>
 
     
 
+    <h4 class="name" id="log_taps"><span class="type-signature"></span>log_taps<span class="signature">(taps, current_state, length)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Logs an LFSR's state and marks which tap positions are used to determine
+the next state.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The tap positions to mark, ordered <code>m..1</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>current_state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current state of the LFSR.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The number of bits to log.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_debug.js.html">utilities/debug.js</a>, <a href="utilities_debug.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Handle `length` < the high bit of `current_state` or the largest
+  number in `taps`.</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        
+<span class="param-type">TypeError</span>
+
+
+    
+    </div>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The string that was logged.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>log_taps([5, 3, 2], 0b1, 5)
+//=> '00001\n• •• '</code></pre>
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="population_count"><span class="type-signature"></span>population_count<span class="signature">(n)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
@@ -1920,13 +2149,13 @@ cross-correlation set.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bits_in_number">bits_in_number</a></li><li><a href="global.html#bits_to_string">bits_to_string</a></li><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li><li><a href="global.html#rotate_array">rotate_array</a></li><li><a href="global.html#rotate_number_bits">rotate_number_bits</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FibonacciLFSR.html">FibonacciLFSR</a></li><li><a href="GaloisLFSR.html">GaloisLFSR</a></li><li><a href="GoldCode.html">GoldCode</a></li><li><a href="LFSR.html">LFSR</a></li><li><a href="MSequence.html">MSequence</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bits_in_number">bits_in_number</a></li><li><a href="global.html#bits_to_string">bits_to_string</a></li><li><a href="global.html#cross_correlate">cross_correlate</a></li><li><a href="global.html#dot_product">dot_product</a></li><li><a href="global.html#is_preferred_sequence">is_preferred_sequence</a></li><li><a href="global.html#log_taps">log_taps</a></li><li><a href="global.html#population_count">population_count</a></li><li><a href="global.html#preferred_sequence_values">preferred_sequence_values</a></li><li><a href="global.html#rotate_array">rotate_array</a></li><li><a href="global.html#rotate_number_bits">rotate_number_bits</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 12 2016 06:53:03 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Jun 12 2016 18:57:28 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
