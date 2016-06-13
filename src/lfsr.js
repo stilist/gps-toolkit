@@ -1,5 +1,6 @@
 import 'babel-polyfill'
 import { bits_in_number } from './utilities/constants'
+import { log_taps } from './utilities/debug'
 
 /**
  * Filter an array to unique items.
@@ -195,6 +196,15 @@ class LFSR {
 
     this._feedback_tap_mask = mask
     return mask
+  }
+
+  /**
+   * Logs the taps and current state to help with debugging.
+   *
+   * @access protected
+   */
+  log_taps() {
+    log_taps(this.sanitized_feedback_taps, this.current_state, this.m)
   }
 }
 
