@@ -53,7 +53,8 @@ class LFSR {
     if (typeof m !== 'number') throw new TypeError('m must be Number')
 
     // Make sure the entire `m` sequence can be stored in a `Number` even if
-    // `feedback_taps` is configured to generate an m-sequence.
+    // `feedback_taps` is configured to generate an m-sequence. (`2**53 - 1` =
+    // `Number.MAX_SAFE_INTEGER`.)
     this.m = m
     if (m < 1 || m > bits_in_number) {
       throw new TypeError(`m must be in the range 1..${bits_in_number} (inclusive)`)
