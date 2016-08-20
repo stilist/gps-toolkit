@@ -121,7 +121,7 @@ class CAEncoderG2 extends FibonacciLFSR {
     // `1 << tap_j - 1` makes a one followed by `tap_j - 1` zeroes; that value
     // is then ORed with `mask`, which sets bit `tap_j - 1` of `mask` to `1`.
     this._delay_taps = taps.map((tap_j) => this.m - tap_j).
-                            reduce((memo, tap_j) => memo | (1 << tap_j - 1),
+                            reduce((memo, tap_j) => memo | (1 << tap_j),
                                    0)
 
     return this._delay_taps
@@ -158,8 +158,8 @@ class CAEncoderG2 extends FibonacciLFSR {
   get sequence() {
     if (this._sequence) return this._sequence
 
-    const bits = [this.seed & 0b1]
-    for (let i = 0; ; i++) {
+    const bits = [this.delay_bit]
+    while (true) {
       let bit = this.next()
 
       if (this.current_state === this.seed) break

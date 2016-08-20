@@ -29,31 +29,55 @@ def shift(register, feedback, output):
 
     return out
 
+###############################################################################
+
 # init registers
 G1 = [1 for i in range(10)]
-SV1_G2 = [1 for i in range(10)]
-SV26_G2 = [1 for i in range(10)]
+G2 = [1 for i in range(10)]
 
-sv1_g2_output = [1]
-sv26_g2_output = [1]
+g1_output = []
+g2_output = []
 ca = []
-for i in range(1022):
+for i in range(1023):
     g1 = shift(G1, [3,10], [10]) #feedback 3,10, output 10
-    g2 = shift(SV1_G2, [2,3,6,8,9,10], [2,6]) #feedback 2,3,6,8,9,10, output 2,6 for sat 1
-    sv1_g2_output.append(g2)
+    g1_output.append(g1)
+    g2 = shift(G2, [2,3,6,8,9,10], [2,6]) #feedback 2,3,6,8,9,10, output 2,6 for sat 1
+    g2_output.append(g2)
     ca.append((g1 + g2) % 2)
 
-    sv26_g2 = shift(SV26_G2, [2,3,6,8,9,10], [6,8])
-    sv26_g2_output.append(sv26_g2)
-
-print 'SV 1:'
-print sv1_g2_output[0:30]
-print int(''.join(map(str, sv1_g2_output)), 2)
-
-print 'SV 26:'
-print sv26_g2_output[0:30]
-print int(''.join(map(str, sv26_g2_output)), 2)
-
+print
+print 'G1:'
+print g1_output[0:30]
+print int(''.join(map(str, g1_output)), 2)
+print
+print 'G2 @ SV 1:'
+print g2_output[0:30]
+print int(''.join(map(str, g2_output)), 2)
+print
 print 'C/A @ SV 1'
-print ca
+print ca[0:30]
+print int(''.join(map(str, ca)), 2)
+print '0b' + ''.join(map(str, ca))
+
+###############################################################################
+
+G1 = [1 for i in range(10)]
+G2 = [1 for i in range(10)]
+
+g2_output = []
+ca = []
+for i in range(1023):
+    g1 = shift(G1, [3,10], [10])
+    g2 = shift(G2, [2,3,6,8,9,10], [6,8])
+    g2_output.append(g2)
+    ca.append((g1 + g2) % 2)
+
+print
+print 'G2 @ SV 26:'
+print g2_output
+print int(''.join(map(str, g2_output)), 2)
+print
+print 'C/A @ SV 26'
+print ca[0:30]
+print int(''.join(map(str, ca)), 2)
 print '0b' + ''.join(map(str, ca))
