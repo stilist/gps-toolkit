@@ -36,11 +36,11 @@ class CAEncoderG1 extends FibonacciLFSR {
   }
 
   /**
-   * @inheritdoc
+   * Calculate the output bit using tap 10.
+   *
+   * @type {number}
    */
-  next() {
-    super.next()
-
+  get output_bit() {
     return this.current_state & 0b0000000001
   }
 }

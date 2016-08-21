@@ -76,9 +76,10 @@ class GoldCode {
   get sequence() {
     if (this._sequence) return this._sequence
 
-    const [lfsrA, lfsrB] = this.lfsrs
+    const lfsrB = this.lfsrs[1]
 
-    const bits = [(lfsrA.current_state & 1) ^ (lfsrB.current_state & 1)]
+    // (lfsrA.current_state & 1)
+    const bits = [this.output_bit]
     while (true) {
       let bit = this.next()
 
@@ -86,13 +87,20 @@ class GoldCode {
       else bits.push(bit)
     }
 
-    // @note Originally, `this._sequence` was generated with
-    //   `lfsrA.sequence ^ lfsrB.sequence`. It worked well for small LFSRs
-    //   (small `m`s) but returned `0` for large LFSRs because of JavaScript's
-    //   floating point system. (Try `1e+26 ^ 2e+26` to see the problem.)
     this._sequence = parseInt(bits.join(''), 2)
 
     return this._sequence
+  }
+
+  /**
+   * The current output bit.
+   *
+   * @type {number}
+   */
+  get output_bit() {
+    const [lfsrA, lfsrB] = this.lfsrs
+
+    return lfsrA.output_bit ^ lfsrB.output_bit
   }
 
   /**
@@ -101,9 +109,10 @@ class GoldCode {
    * @returns {number} The output bit.
    */
   next() {
-    const [lfsrA, lfsrB] = this.lfsrs
+    this.lfsrs.
+      forEach(lfsr => lfsr.next())
 
-    return lfsrA.next() ^ lfsrB.next()
+    return this.output_bit
   }
 }
 

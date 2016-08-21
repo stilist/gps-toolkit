@@ -75,6 +75,15 @@ class LFSR {
   }
 
   /**
+   * The current output bit.
+   *
+   * @type {number}
+   */
+  get output_bit() {
+    return this.current_state & 0b1
+  }
+
+  /**
    * Generate the next state in the sequence.
    *
    * @returns {number} The output bit.

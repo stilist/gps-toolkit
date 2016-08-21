@@ -86,6 +86,28 @@ describe('LFSR', () => {
     })
   })
 
+  describe('.output_bit', () => {
+    it('returns 0', () => {
+      const lfsr = new DescribedClass(3, [1], 0b100)
+
+      assert.equal(lfsr.output_bit, 0b0)
+    })
+
+    it('returns 1', () => {
+      const lfsr = new DescribedClass(3, [1], 0b111)
+
+      assert.equal(lfsr.output_bit, 0b1)
+    })
+
+    it('has the same value on multiple calls', () => {
+      const lfsr = new DescribedClass(3, [1], 0b111)
+
+      lfsr.output_bit
+
+      assert.equal(lfsr.output_bit, 0b1)
+    })
+  })
+
   describe('.seed', () => {
     it('sanitizes custom Number seed', () => {
       const lfsr = new DescribedClass(3, [1], 50)

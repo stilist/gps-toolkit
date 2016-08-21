@@ -75,7 +75,7 @@ class GaloisLFSR extends LFSR {
     state ^= (-input) & this.feedback_tap_mask
     this.current_state = state
 
-    return state & 1
+    return this.output_bit
   }
 }
 

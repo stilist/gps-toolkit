@@ -7,7 +7,7 @@ describe('CAEncoderG1', () => {
     it('matches expected output', () => {
       let lfsr = new DescribedClass()
 
-      let sequence = [0b1]
+      let sequence = [lfsr.output_bit]
       for (let n = 1; n < 30; n++) sequence.push(lfsr.next())
 
       let reference = [0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1, 0b0,

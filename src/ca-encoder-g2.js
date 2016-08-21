@@ -128,28 +128,15 @@ class CAEncoderG2 extends FibonacciLFSR {
   }
 
   /**
-   * Generate the next state in the sequence.
-   *
-   * @returns {number} The output bit.
-   */
-  next() {
-    super.next()
-
-    return this.delay_bit
-  }
-
-  /**
    * Calculate the delayed output bit using {@link CAEncoderG2.delay_taps}.
    *
-   * @access private
    * @type {number}
    */
-  get delay_bit() {
+  get output_bit() {
     const active_delay_bits = this.current_state & this.delay_taps
     const active_delay_bit_count = population_count(active_delay_bits)
-    const output_bit = active_delay_bit_count % 2
 
-    return output_bit
+    return active_delay_bit_count % 2
   }
 
   /**
@@ -158,7 +145,7 @@ class CAEncoderG2 extends FibonacciLFSR {
   get sequence() {
     if (this._sequence) return this._sequence
 
-    const bits = [this.delay_bit]
+    const bits = [this.output_bit]
     while (true) {
       let bit = this.next()
 

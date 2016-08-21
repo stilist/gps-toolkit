@@ -83,7 +83,7 @@ class FibonacciLFSR extends LFSR {
 
     this.current_state = state
 
-    return state & 1
+    return this.output_bit
   }
 
   /**

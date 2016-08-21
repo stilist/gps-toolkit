@@ -26,7 +26,7 @@ describe('CAEncoderG2', () => {
     it('matches the output for SV 1', () => {
       let lfsr = new DescribedClass(1)
 
-      let sequence = [lfsr.delay_bit]
+      let sequence = [lfsr.output_bit]
       for (let n = 1; n < 30; n++) sequence.push(lfsr.next())
 
       let reference = [0b0, 0b0, 0b1, 0b1, 0b0, 0b1, 0b1, 0b1, 0b1, 0b1, 0b1,
@@ -39,7 +39,7 @@ describe('CAEncoderG2', () => {
     it('matches the output for SV 26', () => {
       let lfsr = new DescribedClass(26)
 
-      let sequence = [lfsr.delay_bit]
+      let sequence = [lfsr.output_bit]
       for (let n = 1; n < 30; n++) sequence.push(lfsr.next())
 
       let reference = [0b0, 0b0, 0b0, 0b0, 0b0, 0b0, 0b1, 0b1, 0b1, 0b0, 0b0,
