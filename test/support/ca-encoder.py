@@ -74,7 +74,7 @@ for i in range(1023):
 
 print
 print 'G2 @ SV 26:'
-print g2_output
+print g2_output[0:30]
 print int(''.join(map(str, g2_output)), 2)
 print
 print 'C/A @ SV 26'
