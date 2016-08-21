@@ -77,7 +77,20 @@ class GoldCode {
     if (this._sequence) return this._sequence
 
     const [lfsrA, lfsrB] = this.lfsrs
-    this._sequence = lfsrA.sequence ^ lfsrB.sequence
+
+    const bits = [(lfsrA.current_state & 1) ^ (lfsrB.current_state & 1)]
+    while (true) {
+      let bit = this.next()
+
+      if (lfsrB.current_state === lfsrB.seed) break
+      else bits.push(bit)
+    }
+
+    // @note Originally, `this._sequence` was generated with
+    //   `lfsrA.sequence ^ lfsrB.sequence`. It worked well for small LFSRs
+    //   (small `m`s) but returned `0` for large LFSRs because of JavaScript's
+    //   floating point system. (Try `1e+26 ^ 2e+26` to see the problem.)
+    this._sequence = parseInt(bits.join(''), 2)
 
     return this._sequence
   }
