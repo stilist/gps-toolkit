@@ -35,7 +35,7 @@
 
     "pretest": "npm run lint && npm run build",
     "test": "npm run test:doctest && npm run test:spec",
-    "test:doctest": "mocha --require jsdoctest $(find lib/utilities/ -name \"*.js\")",
+    "test:doctest": "mocha --require jsdoctest lib/utilities/*.js",
     "test:spec": "mocha test/*.spec.js test/**/*.spec.js",
     "posttest": "npm run doc",
 
