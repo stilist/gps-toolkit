@@ -771,6 +771,11 @@
       "from": "fs-readdir-recursive@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-0.1.2.tgz"
     },
+    "fs.realpath": {
+      "version": "1.0.0",
+      "from": "fs.realpath@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
+    },
     "fsevents": {
       "version": "1.0.12",
       "from": "fsevents@>=1.0.0 <2.0.0",
