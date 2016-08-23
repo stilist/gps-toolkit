@@ -13,13 +13,13 @@ describe('LFSR', () => {
 
     it('throws an error when m is < 1', () => {
       assert.throws(() => { new DescribedClass(0) },
-                    TypeError)
+                    RangeError)
     })
 
     it('throws an error when maximum sequence length is > MAX_SAFE_INTEGER', () => {
       const length = bits_in_number
       assert.throws(() => { new DescribedClass(length + 1) },
-                    TypeError)
+                    RangeError)
     })
 
     it('throws an error when feedback_taps is the wrong type', () => {

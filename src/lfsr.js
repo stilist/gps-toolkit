@@ -47,6 +47,7 @@ class LFSR {
    *   output (range `1..m` inclusive).
    * @param {(number|string)} [seed=1] - Starting value for the generator.
    *
+   * @throws {RangeError}
    * @throws {TypeError}
    */
   constructor(m = 1, feedback_taps = [1], seed = 1) {
@@ -57,7 +58,7 @@ class LFSR {
     // `Number.MAX_SAFE_INTEGER`.)
     this.m = m
     if (m < 1 || m > bits_in_number) {
-      throw new TypeError(`m must be in the range 1..${bits_in_number} (inclusive)`)
+      throw new RangeError(`m must be in the range 1..${bits_in_number} (inclusive)`)
     }
 
     if (typeof feedback_taps.length === 'undefined') {

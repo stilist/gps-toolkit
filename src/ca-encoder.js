@@ -60,13 +60,14 @@ class CAEncoder extends GoldCode {
   /**
    * @param {number} sv - The SV ID.
    *
+   * @throws {RangeError}
    * @throws {TypeError}
    */
   constructor(sv) {
     super(10)
 
     if (typeof sv !== 'number') throw new TypeError('sv must be a number')
-    if (sv < 1 || sv > 32) throw new TypeError('sv must be in the range 1..32 (inclusive)')
+    if (sv < 1 || sv > 32) throw new RangeError('sv must be in the range 1..32 (inclusive)')
     this.sv = sv
   }
 

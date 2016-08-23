@@ -18,7 +18,8 @@ class Time {
   /**
    * @param {Date} [date=new Date()] - The date to use.
    *
-   * @throws {(RangeError|TypeError)}
+   * @throws {RangeError}
+   * @throws {TypeError}
    */
   constructor(date) {
     if (date) {

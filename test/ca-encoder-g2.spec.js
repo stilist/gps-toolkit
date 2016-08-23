@@ -7,17 +7,17 @@ describe('CAEncoderG2', () => {
     /* eslint-disable no-new */
     it('throws an error when sv is not a Number', () => {
       assert.throws(() => { new DescribedClass('a') },
-      TypeError)
+                    TypeError)
     })
 
     it('throws an error when sv is too low', () => {
       assert.throws(() => { new DescribedClass(-1) },
-      TypeError)
+                    RangeError)
     })
 
     it('throws an error when sv is too high', () => {
       assert.throws(() => { new DescribedClass(100) },
-      TypeError)
+                    RangeError)
     })
     /* eslint-enable no-new */
   })

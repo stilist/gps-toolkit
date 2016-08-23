@@ -97,13 +97,14 @@ class CAEncoderG2 extends FibonacciLFSR {
   /**
    * @param {number} sv - The SV ID.
    *
+   * @throws {RangeError}
    * @throws {TypeError}
    */
   constructor(sv) {
     super(10, [10, 2, 3, 6, 8, 9], 0b1111111111)
 
     if (!Number.isInteger(sv)) throw new TypeError('sv must be a number')
-    if (sv < 1 || sv > 32) throw new TypeError('sv must be in the range 1..32 (inclusive)')
+    if (sv < 1 || sv > 32) throw new RangeError('sv must be in the range 1..32 (inclusive)')
     this.sv = sv
   }
 
